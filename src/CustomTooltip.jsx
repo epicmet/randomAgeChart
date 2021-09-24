@@ -12,10 +12,8 @@ const CustomTooltip = ({ active, payload, label, people }) => {
         <p className="amount">Amount: {payload[0].payload.amount}</p>
         <div className="underline"></div>
         {currPeople.map((p, index) => (
-          <article className="person">
-            <p className="name" key={index}>
-              {p.name.first}
-            </p>
+          <article className="person" key={index}>
+            <p className="name">{p.name.first}</p>
             <img
               className="thumbnail"
               src={p.picture.thumbnail}
