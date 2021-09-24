@@ -104,27 +104,31 @@ const App = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <label htmlFor="min">Min: </label>
-        <input
-          id="min"
-          type="number"
-          onChange={(e) => minHandler(e.target.value)}
-          min={min}
-          value={minInput}
-        />
-        <label htmlFor="max">Max: </label>
-        <input
-          id="max"
-          type="number"
-          onChange={(e) => maxHandler(e.target.value)}
-          max={max}
-          value={maxInput}
-        />
+    <section className="section">
+      <form onSubmit={(e) => e.preventDefault()} className="form">
+        <div className="form-control">
+          <label htmlFor="min">Min: </label>
+          <input
+            id="min"
+            type="number"
+            onChange={(e) => minHandler(e.target.value)}
+            min={min}
+            value={minInput}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="max">Max: </label>
+          <input
+            id="max"
+            type="number"
+            onChange={(e) => maxHandler(e.target.value)}
+            max={max}
+            value={maxInput}
+          />
+        </div>
       </form>
-      <div style={{ height: "100vh" }}>
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="chart-container">
+        <ResponsiveContainer width="100%" height={400}>
           <BarChart
             width={500}
             height={300}
@@ -141,14 +145,19 @@ const App = () => {
             <YAxis tickLine={false} allowDecimals={false} />
             <Tooltip content={<CustomTooltip people={people} />} />
             <Legend />
-            <Bar type="monotone" dataKey="amount" stroke="#8884d8" />
+            <Bar
+              type="monotone"
+              dataKey="amount"
+              stroke="#8884d8"
+              fill="#3bacee"
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>
       <button type="button" onClick={fetchNewData}>
         fetch new data
       </button>
-    </div>
+    </section>
   );
 };
 

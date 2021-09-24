@@ -1,13 +1,71 @@
+html {
+  font-size: 62.5%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh - 10px;
+  width: 100vw;
+  font-size: 2rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 25px;
+}
+
+.form {
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form-control {
+  margin: 10px;
+}
+
+.form-control > input {
+  max-width: 80px;
+  font-size: 1.7rem;
+}
+
+.form-control > input:focus {
+  outline: none;
+}
+
+.chart-container {
+  width: 100%;
+}
+
+button {
+  padding: 10px;
+  color: #fff;
+  margin-top: 50px;
+  font-size: 1.7rem;
+  border: none;
+  border-radius: 10px 5px;
+  background-color: #3b83ee;
+  transition: all 0.5s;
+}
+
+button:hover {
+  background-color: #3bacee;
+  box-shadow: 0px 5px 10px #bdddf0;
+}
+
+button:active {
+  transform: translate(0, 10px);
+}
+
+button:focus {
+  outline: none;
 }
