@@ -165,7 +165,7 @@ const App = () => {
         </ResponsiveContainer>
       </div>
       <button type="button" onClick={fetchNewData}>
-        fetch new data
+        Fetch New Data
       </button>
     </section>
   );
