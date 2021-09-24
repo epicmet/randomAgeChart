@@ -44,9 +44,9 @@ const App = () => {
     setPeople(data);
 
     // Sorting and constructing new arr
-    const sortedArr = sortByAge(data);
-    const chartData = constructArr(sortedArr.results);
-    setChartData(chartData);
+    const chartData = constructArr(data.results);
+    const sortedData = sortByAge(chartData);
+    setChartData(sortedData);
   };
 
   useEffect(() => {
