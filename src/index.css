@@ -69,3 +69,43 @@ button:active {
 button:focus {
   outline: none;
 }
+
+/* ToolTip */
+.tooltip-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(100, 100, 100, 0.5);
+  padding: 5px 3px;
+}
+
+.underline {
+  background-color: #e68240;
+  width: 90%;
+  height: 2px;
+}
+
+.age,
+.amount {
+  margin: 1px;
+  color: #fff;
+}
+
+.person {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.name {
+  margin-left: 5px;
+}
+
+.thumbnail {
+  margin: 10px;
+  border-radius: 50%;
+  max-width: 50px;
+  max-height: 50px;
+}
