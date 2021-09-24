@@ -42,6 +42,8 @@ const App = () => {
   const [chartData, setChartData] = useState([]);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(100);
+  const [minInput, setMinInput] = useState(0);
+  const [maxInput, setMaxInput] = useState(100);
 
   const fetchNewData = async () => {
     // API Request
@@ -50,14 +52,36 @@ const App = () => {
     setPeople(data);
 
     // Sorting and constructing new arr
-    const chartData = constructArr(data.results);
-    const sortedData = sortByAge(chartData);
+    const constructedArr = constructArr(data.results);
+    const sortedData = sortByAge(constructedArr);
     setChartData(sortedData);
+
+    const minVal = sortedData.reduce((curr, final) => {
+      return curr.age < final.age ? curr : final;
+    });
+    setMin(minVal.age);
+    setMinInput(minVal.age);
+
+    const maxVal = sortedData.reduce((curr, final) => {
+      return curr.age > final.age ? curr : final;
+    });
+    setMax(maxVal.age);
+    setMaxInput(maxVal.age);
   };
 
   useEffect(() => {
     fetchNewData();
   }, []);
+
+  const minHandler = (val) => {
+    let newVal = val;
+    if (!(newVal >= maxInput)) setMinInput(val);
+  };
+
+  const maxHandler = (val) => {
+    let newVal = val;
+    if (!(newVal <= minInput)) setMaxInput(val);
+  };
 
   return (
     <div>
@@ -65,16 +89,18 @@ const App = () => {
         <label htmlFor="min">Min: </label>
         <input
           id="min"
-          type="text"
-          onChange={(e) => setMin(e.target.value)}
-          value={min}
+          type="number"
+          onChange={(e) => minHandler(e.target.value)}
+          min={min}
+          value={minInput}
         />
         <label htmlFor="max">Max: </label>
         <input
           id="max"
-          type="text"
-          onChange={(e) => setMax(e.target.value)}
-          value={max}
+          type="number"
+          onChange={(e) => maxHandler(e.target.value)}
+          max={max}
+          value={maxInput}
         />
       </form>
       <div style={{ height: "100vh" }}>
