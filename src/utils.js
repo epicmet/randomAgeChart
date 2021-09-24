@@ -31,3 +31,14 @@ export const constructArr = (arr) => {
   }
   return results;
 };
+
+export const setBoundries = (min, max, arr) => {
+  min = Number(min);
+  max = Number(max);
+
+  const res = [];
+  for (const data of arr) {
+    if (data.age >= min && data.age <= max) res.push(data);
+  }
+  return res;
+};

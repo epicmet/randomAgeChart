@@ -12,40 +12,16 @@ import {
   Bar,
 } from "recharts";
 
-import { getRandomNumber, sortByAge, constructArr } from "./utils";
+import {
+  getRandomNumber,
+  sortByAge,
+  constructArr,
+  setBoundries,
+} from "./utils";
+import CustomTooltip from "./CustomTooltip";
 import mockData from "./mockData";
 
 const url = "https://randomuser.me/api/";
-
-const CustomTooltip = ({ active, payload, label, people }) => {
-  if (active) {
-    const currPeople = people.results.filter(
-      (p) => p.dob.age === payload[0].payload.age
-    );
-
-    return (
-      <div className="tooltip-container">
-        <p className="age">Age: {label}</p>
-        <p className="amount">Amount: {payload[0].payload.amount}</p>
-        <div className="underline"></div>
-        {currPeople.map((p, index) => (
-          <article className="person">
-            <p className="name" key={index}>
-              {p.name.first}
-            </p>
-            <img
-              className="thumbnail"
-              src={p.picture.thumbnail}
-              alt="thumbnail"
-            />
-          </article>
-        ))}
-      </div>
-    );
-  }
-
-  return null;
-};
 
 const App = () => {
   const [people, setPeople] = useState([]);
@@ -85,20 +61,9 @@ const App = () => {
     fetchNewData();
   }, []);
 
-  const setBoundries = (min, max) => {
-    min = Number(min);
-    max = Number(max);
-
-    const res = [];
-    for (const data of chartData) {
-      if (data.age >= min && data.age <= max) res.push(data);
-    }
-    return res;
-  };
-
   useEffect(() => {
     if (chartData.length !== 0 && minInput !== 0 && maxInput !== 100) {
-      const newChartData = setBoundries(minInput, maxInput);
+      const newChartData = setBoundries(minInput, maxInput, chartData);
       setFilteredData(newChartData);
     }
   }, [minInput, maxInput]);
