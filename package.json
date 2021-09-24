@@ -7,7 +7,6 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "fusioncharts": "^3.18.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "recharts": "^2.1.4"
