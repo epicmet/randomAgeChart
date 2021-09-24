@@ -40,6 +40,7 @@ const CustomTooltip = ({ active, payload, label, people }) => {
 const App = () => {
   const [people, setPeople] = useState([]);
   const [chartData, setChartData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(100);
   const [minInput, setMinInput] = useState(0);
@@ -55,6 +56,7 @@ const App = () => {
     const constructedArr = constructArr(data.results);
     const sortedData = sortByAge(constructedArr);
     setChartData(sortedData);
+    setFilteredData(sortedData);
 
     const minVal = sortedData.reduce((curr, final) => {
       return curr.age < final.age ? curr : final;
@@ -72,6 +74,20 @@ const App = () => {
   useEffect(() => {
     fetchNewData();
   }, []);
+
+  useEffect(() => {
+    if (chartData.length !== 0 && minInput !== 0 && maxInput !== 100) {
+      const minIndex = chartData.findIndex(
+        (data) => data.age === Number(minInput)
+      );
+      const maxIndex = chartData.findIndex(
+        (data) => data.age === Number(maxInput)
+      );
+
+      const newChartData = chartData.slice(minIndex, maxIndex + 1);
+      setFilteredData(newChartData);
+    }
+  }, [minInput, maxInput]);
 
   const minHandler = (val) => {
     let newVal = val;
@@ -108,7 +124,7 @@ const App = () => {
           <BarChart
             width={500}
             height={300}
-            data={chartData}
+            data={filteredData}
             margin={{
               top: 5,
               right: 30,
