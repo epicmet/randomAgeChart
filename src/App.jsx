@@ -1,31 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
-import {
-  getRandomNumber,
-  sortByAge,
-  constructArr,
-  setBoundries,
-} from "./utils";
+import { setBoundries } from "./utils";
 import Form from "./components/Form";
 import Chart from "./components/Chart";
 import Button from "./components/Button";
 import { useAppContext } from "./context/AppContext";
-import mockData from "./mockData";
 
 const App = () => {
-  const {
-    people,
-    fetchNewData,
-    chartData,
-    filteredData,
-    setFilteredData,
-    min,
-    max,
-    minInput,
-    setMinInput,
-    maxInput,
-    setMaxInput,
-  } = useAppContext();
+  const { fetchNewData, chartData, setFilteredData, minInput, maxInput } =
+    useAppContext();
 
   useEffect(() => {
     fetchNewData();

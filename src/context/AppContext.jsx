@@ -64,6 +64,7 @@ const AppProvider = ({ children }) => {
   );
 };
 
+// A simple Hook to use the context easily anywhere
 const useAppContext = () => {
   return useContext(AppContext);
 };
