@@ -37,15 +37,20 @@ const App = () => {
     return results;
   };
 
-  useEffect(async () => {
+  const fetchNewData = async () => {
+    // API Request
     const resp = await fetch(`${url}?results=${getRandomNumber()}`);
     const data = await resp.json();
+    setPeople(data);
+
+    // Sorting and constructing new arr
     const sortedArr = sortByAge(data);
     const chartData = constructArr(sortedArr.results);
     setChartData(chartData);
-    // setPeople(sortedArr);
-    // setMin(sortedArr[0].dob.age);
-    // setMax(sortedArr[sortedArr.length - 1].dob.age);
+  };
+
+  useEffect(() => {
+    fetchNewData();
   }, []);
 
   return (
@@ -88,6 +93,9 @@ const App = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
+      <button type="button" onClick={fetchNewData}>
+        fetch new data
+      </button>
     </div>
   );
 };
