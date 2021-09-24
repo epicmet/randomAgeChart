@@ -75,16 +75,20 @@ const App = () => {
     fetchNewData();
   }, []);
 
+  const setBoundries = (min, max) => {
+    min = Number(min);
+    max = Number(max);
+
+    const res = [];
+    for (const data of chartData) {
+      if (data.age >= min && data.age <= max) res.push(data);
+    }
+    return res;
+  };
+
   useEffect(() => {
     if (chartData.length !== 0 && minInput !== 0 && maxInput !== 100) {
-      const minIndex = chartData.findIndex(
-        (data) => data.age === Number(minInput)
-      );
-      const maxIndex = chartData.findIndex(
-        (data) => data.age === Number(maxInput)
-      );
-
-      const newChartData = chartData.slice(minIndex, maxIndex + 1);
+      const newChartData = setBoundries(minInput, maxInput);
       setFilteredData(newChartData);
     }
   }, [minInput, maxInput]);
