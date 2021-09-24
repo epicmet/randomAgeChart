@@ -31,15 +31,28 @@ body {
 
 .form-control {
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.form-control > label {
+  font-size: 1.8rem;
 }
 
 .form-control > input {
   max-width: 80px;
   font-size: 1.7rem;
+  border: 2px solid rgba(100, 100, 100, 0.5);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .form-control > input:focus {
   outline: none;
+  border-color: #3bacee;
+  background-color: rgba(100, 100, 100, 0.1);
 }
 
 .chart-container {
