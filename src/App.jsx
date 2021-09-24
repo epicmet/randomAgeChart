@@ -15,6 +15,26 @@ import mockData from "./mockData";
 
 const url = "https://randomuser.me/api/";
 
+const CustomTooltip = ({ active, payload, label, people }) => {
+  if (active) {
+    const currPeople = people.results.filter(
+      (p) => p.dob.age === payload[0].payload.age
+    );
+
+    return (
+      <div>
+        <p>Age: {label}</p>
+        <p>amount: {payload[0].payload.amount}</p>
+        {currPeople.map((p, index) => (
+          <p key={index}>{p.name.first}</p>
+        ))}
+      </div>
+    );
+  }
+
+  return null;
+};
+
 const App = () => {
   const [people, setPeople] = useState([]);
   const [chartData, setChartData] = useState([]);
@@ -71,7 +91,7 @@ const App = () => {
             <CartesianGrid strokeDasharray="3 2" />
             <XAxis dataKey="age" />
             <YAxis />
-            <Tooltip />
+            <Tooltip content={<CustomTooltip people={people} />} />
             <Legend />
             <Line type="monotone" dataKey="amount" stroke="#8884d8" />
           </LineChart>
