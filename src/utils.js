@@ -15,3 +15,19 @@ export const sortByAge = (arr) => {
 
   return arr;
 };
+
+export const constructArr = (arr) => {
+  const results = [];
+  for (let profile of arr) {
+    const {
+      dob: { age },
+    } = profile;
+    if (results.some((obj) => obj.age === age)) {
+      const index = results.findIndex((obj) => obj.age === age);
+      results[index].amount++;
+    } else {
+      results.push({ age, amount: 1 });
+    }
+  }
+  return results;
+};

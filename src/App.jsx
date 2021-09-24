@@ -10,7 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import { getRandomNumber, sortByAge } from "./utils";
+import { getRandomNumber, sortByAge, constructArr } from "./utils";
 import mockData from "./mockData";
 
 const url = "https://randomuser.me/api/";
@@ -20,22 +20,6 @@ const App = () => {
   const [chartData, setChartData] = useState([]);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(100);
-
-  const constructArr = (arr) => {
-    const results = [];
-    for (let profile of arr) {
-      const {
-        dob: { age },
-      } = profile;
-      if (results.some((obj) => obj.age === age)) {
-        const index = results.findIndex((obj) => obj.age === age);
-        results[index].amount++;
-      } else {
-        results.push({ age, amount: 1 });
-      }
-    }
-    return results;
-  };
 
   const fetchNewData = async () => {
     // API Request
