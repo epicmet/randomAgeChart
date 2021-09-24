@@ -8,6 +8,8 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  BarChart,
+  Bar,
 } from "recharts";
 
 import { getRandomNumber, sortByAge, constructArr } from "./utils";
@@ -77,7 +79,7 @@ const App = () => {
       </form>
       <div style={{ height: "100vh" }}>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart
+          <BarChart
             width={500}
             height={300}
             data={chartData}
@@ -88,13 +90,13 @@ const App = () => {
               bottom: 5,
             }}
           >
-            <CartesianGrid strokeDasharray="3 2" />
-            <XAxis dataKey="age" />
-            <YAxis />
+            <CartesianGrid strokeDasharray="3 2" vertical={false} />
+            <XAxis dataKey="age" tickLine={false} />
+            <YAxis tickLine={false} allowDecimals={false} />
             <Tooltip content={<CustomTooltip people={people} />} />
             <Legend />
-            <Line type="monotone" dataKey="amount" stroke="#8884d8" />
-          </LineChart>
+            <Bar type="monotone" dataKey="amount" stroke="#8884d8" />
+          </BarChart>
         </ResponsiveContainer>
       </div>
       <button type="button" onClick={fetchNewData}>
