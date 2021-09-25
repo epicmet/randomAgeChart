@@ -11,16 +11,21 @@ import {
 } from "recharts";
 import CustomTooltip from "./CustomTooltip";
 import { useAppContext } from "../context/AppContext";
+import {
+  BAR_WIDTH,
+  BAR_HEIGHT,
+  CONTAINER_HEIGHT,
+} from "../constants/constants";
 
 const Chart = () => {
   const { filteredData, people } = useAppContext();
 
   return (
     <div className="chart-container">
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width="100%" height={CONTAINER_HEIGHT}>
         <BarChart
-          width={500}
-          height={300}
+          width={BAR_WIDTH}
+          height={BAR_HEIGHT}
           data={filteredData}
           margin={{
             top: 5,
