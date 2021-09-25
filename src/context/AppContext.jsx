@@ -1,6 +1,7 @@
 import React, { useContext, createContext, useState } from "react";
 import { sortByAge, constructArr } from "../services/services";
 import { getRandomNumber } from "../utils/utils";
+import { INITIAL_MIN_INPUT, INITIAL_MAX_INPUT } from "../constants/constants";
 
 const AppContext = createContext();
 
@@ -10,10 +11,10 @@ const AppProvider = ({ children }) => {
   const [people, setPeople] = useState([]);
   const [chartData, setChartData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(100);
-  const [minInput, setMinInput] = useState(0);
-  const [maxInput, setMaxInput] = useState(100);
+  const [min, setMin] = useState(INITIAL_MIN_INPUT);
+  const [max, setMax] = useState(INITIAL_MAX_INPUT);
+  const [minInput, setMinInput] = useState(INITIAL_MIN_INPUT);
+  const [maxInput, setMaxInput] = useState(INITIAL_MAX_INPUT);
   const [error, setError] = useState(false);
 
   const fetchNewData = async () => {
