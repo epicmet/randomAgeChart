@@ -14,6 +14,7 @@ const AppProvider = ({ children }) => {
   const [max, setMax] = useState(100);
   const [minInput, setMinInput] = useState(0);
   const [maxInput, setMaxInput] = useState(100);
+  const [error, setError] = useState(false);
 
   const fetchNewData = async () => {
     // API Request
@@ -58,6 +59,8 @@ const AppProvider = ({ children }) => {
         maxInput,
         setMaxInput,
         fetchNewData,
+        error,
+        setError,
       }}
     >
       {children}

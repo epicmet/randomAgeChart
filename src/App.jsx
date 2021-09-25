@@ -7,11 +7,23 @@ import Button from "./components/Button";
 import { useAppContext } from "./context/AppContext";
 
 const App = () => {
-  const { fetchNewData, chartData, setFilteredData, minInput, maxInput } =
-    useAppContext();
+  const {
+    fetchNewData,
+    chartData,
+    setFilteredData,
+    minInput,
+    maxInput,
+    error,
+    setError,
+  } = useAppContext();
 
   useEffect(() => {
-    fetchNewData();
+    try {
+      setError(false);
+      fetchNewData();
+    } catch (error) {
+      setError(true);
+    }
   }, []);
 
   useEffect(() => {
@@ -20,6 +32,11 @@ const App = () => {
       setFilteredData(newChartData);
     }
   }, [minInput, maxInput]);
+
+  if (error)
+    return (
+      <h1 className="error">Somthing went wrong! Please try again later</h1>
+    );
 
   return (
     <section className="section">
