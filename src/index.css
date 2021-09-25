@@ -12,6 +12,9 @@ body {
   height: 100vh - 10px;
   width: 100vw;
   font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .section {
@@ -56,7 +59,7 @@ body {
 }
 
 .chart-container {
-  width: 100%;
+  width: 90vw;
 }
 
 button {
@@ -121,4 +124,8 @@ button:focus {
   border-radius: 50%;
   max-width: 50px;
   max-height: 50px;
+}
+
+.error {
+  font-size: 4rem;
 }
