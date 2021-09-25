@@ -6,13 +6,11 @@ const Form = () => {
     useAppContext();
 
   const minHandler = (val) => {
-    let newVal = val;
-    if (!(newVal >= maxInput)) setMinInput(val);
+    if (!(val >= maxInput)) setMinInput(val);
   };
 
   const maxHandler = (val) => {
-    let newVal = val;
-    if (!(newVal <= minInput)) setMaxInput(val);
+    if (!(val <= minInput)) setMaxInput(val);
   };
 
   return (
