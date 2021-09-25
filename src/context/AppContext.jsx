@@ -1,5 +1,6 @@
 import React, { useContext, createContext, useState } from "react";
-import { getRandomNumber, sortByAge, constructArr } from "../utils";
+import { sortByAge, constructArr } from "../services/services";
+import { getRandomNumber } from "../utils/utils";
 
 const AppContext = createContext();
 

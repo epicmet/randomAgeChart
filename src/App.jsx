@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { setBoundries } from "./utils";
+import { setBoundries } from "./services/services";
 import Form from "./components/Form";
 import Chart from "./components/Chart";
 import Button from "./components/Button";
