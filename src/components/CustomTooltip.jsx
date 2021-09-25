@@ -1,7 +1,8 @@
 import React from "react";
+import { isEmptyArray } from "../utils/utils";
 
 const CustomTooltip = ({ active, payload, label, people }) => {
-  if (active) {
+  if (active && payload && !isEmptyArray(people)) {
     const currPeople = people.results.filter(
       (p) => p.dob.age === payload[0].payload.age
     );
