@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 
 import { setBoundries } from "./services/services";
+import { isEmptyArray, hasChanged } from "./utils/utils";
 import Form from "./components/Form";
 import Chart from "./components/Chart";
 import Button from "./components/Button";
 import { useAppContext } from "./context/AppContext";
+import { INITIAL_MIN_INPUT, INITIAL_MAX_INPUT } from "./constants/constants";
 
 const App = () => {
   const {
@@ -27,7 +29,11 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    if (chartData.length !== 0 && minInput !== 0 && maxInput !== 100) {
+    if (
+      !isEmptyArray(chartData) &&
+      hasChanged(INITIAL_MIN_INPUT, minInput) &&
+      hasChanged(INITIAL_MAX_INPUT, maxInput)
+    ) {
       const newChartData = setBoundries(minInput, maxInput, chartData);
       setFilteredData(newChartData);
     }
