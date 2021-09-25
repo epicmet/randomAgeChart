@@ -1,12 +1,12 @@
 import React from "react";
 import { useAppContext } from "../context/AppContext";
 
-const Button = () => {
+const Button = ({ text }) => {
   const { fetchNewData } = useAppContext();
 
   return (
     <button type="button" onClick={fetchNewData}>
-      Fetch New Data
+      {text}
     </button>
   );
 };

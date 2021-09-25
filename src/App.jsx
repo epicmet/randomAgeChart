@@ -48,7 +48,7 @@ const App = () => {
     <section className="section">
       <Form />
       <Chart />
-      <Button />
+      <Button text={"Fetch New Data"} />
     </section>
   );
 };
