@@ -11,11 +11,7 @@ import {
 } from "recharts";
 import CustomTooltip from "./CustomTooltip";
 import { useAppContext } from "../context/AppContext";
-import {
-  BAR_WIDTH,
-  BAR_HEIGHT,
-  CONTAINER_HEIGHT,
-} from "../constants/constants";
+import { BAR_WIDTH, BAR_HEIGHT, CONTAINER_HEIGHT } from "../context/constants";
 
 const Chart = () => {
   const { filteredData, people } = useAppContext();

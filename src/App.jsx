@@ -6,7 +6,7 @@ import Form from "./components/Form";
 import Chart from "./components/Chart";
 import Button from "./components/Button";
 import { useAppContext } from "./context/AppContext";
-import { INITIAL_MIN_INPUT, INITIAL_MAX_INPUT } from "./constants/constants";
+import { INITIAL_MIN_INPUT, INITIAL_MAX_INPUT } from "./context/constants";
 
 const App = () => {
   const {

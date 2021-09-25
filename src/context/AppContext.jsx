@@ -1,7 +1,7 @@
 import React, { useContext, createContext, useState } from "react";
 import { sortByAge, constructArr } from "../services/services";
 import { getRandomNumber } from "../utils/utils";
-import { INITIAL_MIN_INPUT, INITIAL_MAX_INPUT } from "../constants/constants";
+import { INITIAL_MIN_INPUT, INITIAL_MAX_INPUT } from "./constants";
 
 const AppContext = createContext();
 
